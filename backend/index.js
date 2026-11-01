@@ -4,6 +4,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 const connectDB = require("./config/db");
+const healthRoutes = require("./routes/healthRoutes");
 
 dotenv.config();
 
@@ -18,10 +19,7 @@ app.use(cors({
 }));
 app.use(cookieParser());
 
-// Test route
-app.get("/", (req, res) => {
-  res.send("TPT Backend is running!");
-});
+app.use("/api/health", healthRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
