@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const connectDB = require("./config/db");
 const healthRoutes = require("./routes/healthRoutes");
 
+const authRoutes=require('./routes/authRoutes')
 dotenv.config();
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(cookieParser());
 
 app.use("/api/health", healthRoutes);
 
+app.use("/api/auth",authRoutes)
 // Start server
 const PORT = process.env.PORT || 5000;
 
